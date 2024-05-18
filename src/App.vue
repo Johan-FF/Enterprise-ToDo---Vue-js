@@ -12,24 +12,34 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
+:root {
+  --skin-color: #ff8e8f; /*4 */
+  --pink-color: #e178c5; /*6 */
+  --yellow-color: #ffff80; /*7 */
+  --light-pink-color: #f3d0d7; /*9 */
+  --light-yellow-color: #f6f5f2; /*11 */
+  --dark-blue-color: #2c3e50; /*12 */
+  --green-color: #42b983; /*13 */
+  --font-comfortaa: "Comfortaa", cursive;
+}
 body {
-  background-color: white; /* Establece el fondo de toda la página */
-  font-family: "Comfortaa", cursive;
+  background-color: var(--color-11);
+  font-family: var(--font-comfortaa);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--color-12);
   margin-top: 60px;
   font-weight: 300;
 }
 #app {
-  font-family: "Comfortaa", cursive;
+  font-family: var(--font-comfortaa);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--color-12);
   margin-top: 60px;
   font-weight: 300;
-  background-color: white;
+  background-color: var(--color-11);
 }
 </style>

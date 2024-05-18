@@ -14,12 +14,10 @@ export default {
     return {
       orgStyle: {
         color: "black",
-        fontFamily: "Comfortaa, cursive",
         fontWeight: 1000,
       },
       compStyle: {
         color: "white",
-        fontFamily: "Comfortaa, cursive",
         fontWeight: 1000,
       },
     };
@@ -29,7 +27,8 @@ export default {
 
 <style scoped>
 .app-header {
-  background-color: #ff8e8f;
+  background-color: var(--skin-color);
+  font-family: var(--font-comfortaa);
   padding: 5px;
   text-align: center;
   font-size: 20px;

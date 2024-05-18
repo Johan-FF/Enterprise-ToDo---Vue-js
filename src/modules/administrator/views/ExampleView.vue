@@ -22,7 +22,7 @@ import AppHeader from "@/components/AppHeader.vue";
 import AppLayout from "@/layouts/AppLayout.vue";
 
 export default {
-  name: "HomeView",
+  name: "ExampleView",
   components: {
     AppHeader,
     AppLayout,
@@ -50,7 +50,7 @@ export default {
 .preview-image {
   width: 50%;
   border-radius: 15px;
-  border: 5px solid var(--pink-color);
+  border: 5px solid var(--color-6);
 }
 .buttons-container {
   display: flex;
@@ -60,9 +60,9 @@ export default {
 
 .button {
   border-radius: 20px;
-  font-family: var(--font-comfortaa);
-  background-color: var(--yellow-color);
-  color: var(--dark-blue-color);
+  font-family: "Comfortaa", cursive;
+  background-color: var(--color-7);
+  color: var(--color-12);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -71,6 +71,6 @@ export default {
 }
 
 .button:active {
-  background-color: var(--pink-color);
+  background-color: var(--color-6);
 }
 </style>
