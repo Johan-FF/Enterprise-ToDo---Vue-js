@@ -23,23 +23,22 @@ export default {
   --font-comfortaa: "Comfortaa", cursive;
 }
 body {
-  background-color: var(--color-11);
+  background-color: var(--light-yellow-color);
   font-family: var(--font-comfortaa);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--color-12);
-  margin-top: 60px;
+  color: var(--dark-blue-color);
   font-weight: 300;
+  margin: 0px;
 }
 #app {
   font-family: var(--font-comfortaa);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: var(--color-12);
-  margin-top: 60px;
+  color: var(--dark-blue-color);
   font-weight: 300;
-  background-color: var(--color-11);
+  background-color: var(--light-yellow-color);
 }
 </style>
