@@ -1,9 +1,17 @@
 <template>
   <div class="sidebar">
     <template v-if="user">
+      <button
+        @click="navigate(`${user.generalRole}-welcome`)"
+        class="sidebar-button"
+      >
+        Home
+      </button>
       <template v-if="user.generalRole === 'admin'">
-        <button @click="navigate('roles')" class="sidebar-button">Roles</button>
-        <button @click="navigate('users')" class="sidebar-button">
+        <button @click="navigate('admin-roles')" class="sidebar-button">
+          Roles
+        </button>
+        <button @click="navigate('admin-employees')" class="sidebar-button">
           Usuarios
         </button>
       </template>
@@ -12,7 +20,6 @@
           user.generalRole === 'coordinator' || user.generalRole === 'employee'
         "
       >
-        <button @click="navigate('home')" class="sidebar-button">Home</button>
         <button @click="toggleNotifications" class="sidebar-button">
           Notificaciones
         </button>
@@ -21,15 +28,24 @@
           <p>Notificación 1</p>
           <p>Notificación 2</p>
         </div>
-        <button @click="navigate('projects')" class="sidebar-button">
+        <button
+          @click="navigate(`${user.generalRole}-projects`)"
+          class="sidebar-button"
+        >
           Proyectos
         </button>
-        <button @click="navigate('calendar')" class="sidebar-button">
+        <button
+          @click="navigate(`${user.generalRole}-calendar`)"
+          class="sidebar-button"
+        >
           Calendario
         </button>
-      </template>
-      <template v-else>
-        <!-- Opciones por defecto -->
+        <button
+          @click="navigate(`${user.generalRole}-tasks`)"
+          class="sidebar-button"
+        >
+          Tareas
+        </button>
       </template>
     </template>
   </div>
@@ -37,6 +53,7 @@
 
 <script>
 import { mapState } from "vuex";
+
 export default {
   name: "SideBar",
   computed: {
@@ -52,7 +69,7 @@ export default {
   methods: {
     navigate(page) {
       // Aquí puedes implementar la lógica para la navegación
-      this.$emit("navigate", page);
+      this.$router.push({ name: page });
     },
     toggleNotifications() {
       this.showNotifications = !this.showNotifications;

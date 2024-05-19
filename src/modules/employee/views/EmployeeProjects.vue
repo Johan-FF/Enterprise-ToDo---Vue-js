@@ -1,13 +1,7 @@
 <template>
   <AdminLayout>
-    <div class="admin-welcome">
-      <h2>
-        Esta es una prueba de contenido de admin-welcome <br />
-        Aquí cambia el contenido según si selecciona proyectos o calendario
-        <br />
-        La estructura de las demás views de administrador en teoría deberían
-        tener la misma estructura de admin-welcome
-      </h2>
+    <div class="employee-projects">
+      <h2>Esta es una prueba de contenido de employee-projects</h2>
       <!-- Contenido de bienvenida para administradores -->
     </div>
   </AdminLayout>
@@ -17,7 +11,7 @@
 import AdminLayout from "@/layouts/AdminLayout.vue";
 
 export default {
-  name: "AdminWelcome",
+  name: "EmployeeProjects",
   components: {
     AdminLayout,
   },
@@ -25,14 +19,14 @@ export default {
 </script>
 
 <style scoped>
-.admin-welcome {
+.employee-projects {
   padding: 20px;
   background-color: var(--color2);
   color: var(--color7);
   border-radius: 10px;
 }
 
-.admin-welcome h2 {
+.employee-projects h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }

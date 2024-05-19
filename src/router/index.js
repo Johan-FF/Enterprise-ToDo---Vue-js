@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import administratorRoutes from "@/modules/administrator/routes";
+import coordinatorRoutes from "@/modules/coordinator/routes";
+import employeeRoutes from "@/modules/employee/routes";
 
 import HomeView from "@/views/HomeView.vue";
 import LoginView from "@/views/LoginView.vue";
@@ -24,8 +26,18 @@ const routes = [
   },
   {
     path: "/administrator",
-    // component: AdminLayout,
-    children: administratorRoutes, // Renderizamos las rutas del módulo de administrador dentro de AdminLayout
+    name: "administrator",
+    children: administratorRoutes,
+  },
+  {
+    path: "/coordinator",
+    name: "coordinator",
+    children: coordinatorRoutes,
+  },
+  {
+    path: "/employee",
+    name: "employee",
+    children: employeeRoutes,
   },
 ];
 
