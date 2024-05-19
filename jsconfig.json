@@ -14,6 +14,17 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
-  }
+    ],
+    "jsx": "preserve",  // Para soporte de JSX en archivos .vue
+    "experimentalDecorators": true,  // Habilita decoradores experimentales, si es necesario
+    "allowSyntheticDefaultImports": true,  // Permite importaciones de módulos con exportaciones por defecto
+    "esModuleInterop": true  // Habilita compatibilidad con módulos CommonJS
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

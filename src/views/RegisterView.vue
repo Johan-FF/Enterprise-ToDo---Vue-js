@@ -2,9 +2,7 @@
   <AppLayout>
     <div class="register-view">
       <AppHeader />
-      <h1>
-        Con el fin de conocer tu compañia necesitaremos los siguientes datos
-      </h1>
+      <h1 class="title">Registro</h1>
       <form @submit.prevent="submitForm" class="register-form">
         <div class="form-group">
           <label for="companyName">Nombre de la compañía</label>
@@ -16,12 +14,7 @@
         </div>
         <div class="form-group">
           <label for="employeeCount">Número de empleados</label>
-          <input
-            type="number"
-            id="employeeCount"
-            v-model="employeeCount"
-            required
-          />
+          <input type="number" id="employeeCount" v-model="employeeCount" required />
         </div>
         <div class="form-group">
           <label for="address">Dirección física</label>
@@ -48,12 +41,10 @@
           <input type="tel" id="companyPhone" v-model="companyPhone" required />
         </div>
         <div class="form-group">
-          <label for="contactPhone"
-            >Número de contacto del contacto principal</label
-          >
+          <label for="contactPhone">Número de contacto del contacto principal</label>
           <input type="tel" id="contactPhone" v-model="contactPhone" required />
         </div>
-        <button type="submit">Registrarse</button>
+        <button type="submit" class="button-style default-button">Registrarse</button>
       </form>
     </div>
   </AppLayout>
@@ -109,40 +100,48 @@ export default {
   text-align: center;
   margin-top: 50px;
 }
+
+.title {
+  margin-bottom: 20px;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
 }
+
 .form-group {
-  margin-bottom: 15px;
   width: 100%;
-  max-width: 300px;
 }
+
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
+
 input {
-  border-radius: 5px;
-  font-family: var(--font-comfortaa);
-  border: 1px solid var(--light-pink-color);
-  width: 300px;
-  height: 25px;
-  background-color: var(--light-yellow-color);
+  padding: 10px;
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--input-border-color);
+  background-color: var(--input-background-color);
 }
+
 button {
-  border-radius: 20px;
+  border-radius: var(--button-border-radius);
   font-family: var(--font-comfortaa);
-  background-color: var(--yellow-color);
-  color: var(--dark-blue-color);
+  background-color: var(--button-background-color);
+  color: var(--button-color);
   border: none;
-  padding: 10px 20px;
+  padding: var(--button-padding);
   cursor: pointer;
 }
 
 button:active {
-  background-color: var(--pink-color);
+  background-color: var(--button-active-background-color);
 }
 </style>

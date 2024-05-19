@@ -1,107 +1,76 @@
 <template>
-  <AppLayout>
-    <div class="login-view">
-      <AppHeader />
-      <h1>Inicio de sesión</h1>
-      <form @submit.prevent="submitForm" class="login-form">
-        <div class="form-group">
-          <label for="username">Usuario</label>
-          <input type="text" id="username" v-model="username" required />
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" v-model="password" required />
-        </div>
-        <button type="submit">Iniciar sesión</button>
-      </form>
-      <p class="forgot-password">
-        <a @click="forgotPassword">¿Olvidaste tu contraseña?</a>
-      </p>
-    </div>
-  </AppLayout>
+  <div>
+    <h1 class="title">Inicio de sesión</h1>
+    <form @submit.prevent="login" class="form-vertical">
+      <input
+        v-model="username"
+        placeholder="Nombre de usuario"
+        class="input-style"
+      />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Contraseña"
+        class="input-style"
+      />
+      <button type="submit" class="button-style default-button">Iniciar sesión</button>
+    </form>
+  </div>
 </template>
 
 <script>
-import AppHeader from "@/components/AppHeader.vue";
-import AppLayout from "@/layouts/AppLayout.vue";
-
 export default {
-  name: "LoginView",
-  components: {
-    AppHeader,
-    AppLayout,
-  },
   data() {
     return {
-      username: "",
-      password: "",
+      username: '',
+      password: ''
     };
   },
   methods: {
-    submitForm() {
-      if (this.username && this.password) {
-        // Aquí puedes manejar el envío del formulario
-        console.log("Formulario enviado", {
-          username: this.username,
-          password: this.password,
-        });
+    login() {
+      const user = {
+        name: this.username,
+        password: this.password
+      };
+      // Aquí podrías enviar el usuario y contraseña al servidor para autenticación
+      // y luego manejar la respuesta según corresponda
+      // Ejemplo de manejo de respuesta simulado:
+      if (this.username === 'usuario' && this.password === 'contraseña') {
+        this.$store.dispatch('updateUser', user);
+        this.$router.push({ name: 'admin-welcome' });
+      } else {
+        alert('Usuario o contraseña incorrectos');
       }
-    },
-    forgotPassword() {
-      this.$router.push({ name: "forgot-password" });
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-.login-view {
-  text-align: center;
-  margin-top: 50px;
-}
-.login-form {
+.form-vertical {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.form-group {
-  margin-bottom: 15px;
-  width: 100%;
-  max-width: 300px;
-}
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-input {
-  border-radius: 5px;
-  font-family: var(--font-comfortaa);
-  border: 1px solid var(--light-pink-color);
-  width: 300px;
-  height: 25px;
-  background-color: var(--light-yellow-color);
+  gap: 10px;
 }
 
-button {
-  border-radius: 20px;
-  font-family: var(--font-comfortaa);
-  background-color: var(--yellow-color);
-  color: var(--dark-blue-color);
+.input-style {
+  margin-bottom: 10px;
+  padding: 8px; /* Ajustar el padding de los inputs */
+  border: 1px solid var(--input-border-color); /* Utilizar el color de borde de los inputs */
+  border-radius: var(--input-border-radius); /* Utilizar el radio de borde de los inputs */
+}
+
+.default-button {
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+  padding: var(--button-padding);
+  border-radius: var(--button-border-radius);
   border: none;
-  padding: 10px 20px;
   cursor: pointer;
 }
 
-button:active {
-  background-color: var(--pink-color);
-}
-
-.forgot-password {
-  margin-top: 10px;
-}
-.forgot-password a {
-  color: var(--green-color);
-  cursor: pointer;
+.default-button:active {
+  background-color: var(--button-active-background-color);
 }
 </style>

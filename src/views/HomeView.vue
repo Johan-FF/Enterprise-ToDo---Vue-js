@@ -31,8 +31,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap");
-
 .home-view {
   text-align: center;
   margin-top: 50px;
@@ -50,8 +48,9 @@ export default {
 .preview-image {
   width: 50%;
   border-radius: 15px;
-  border: 5px solid var(--pink-color);
+  border: 5px solid var(--color4); /* Cambiar el borde a color4 */
 }
+
 .buttons-container {
   display: flex;
   justify-content: center;
@@ -61,8 +60,8 @@ export default {
 .button {
   border-radius: 20px;
   font-family: var(--font-comfortaa);
-  background-color: var(--yellow-color);
-  color: var(--dark-blue-color);
+  background-color: var(--color1); /* Cambiar el color de fondo del botón a color1 */
+  color: var(--color7); /* Cambiar el color de texto del botón a color7 */
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -71,6 +70,6 @@ export default {
 }
 
 .button:active {
-  background-color: var(--pink-color);
+  background-color: var(--color4); /* Cambiar el color de fondo del botón activo a color4 */
 }
 </style>

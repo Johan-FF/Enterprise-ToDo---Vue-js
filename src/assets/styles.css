@@ -1,0 +1,50 @@
+/* Importar la fuente Comfortaa */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
+/* Definición de variables para la paleta de colores */
+:root {
+  --color1: #FFFF80; /* Amarillo claro */
+  --color2: #ffdbb3; /* Naranja claro */
+  --color3: #FF5580; /* Rosa claro */
+  --color4: #FF0080; /* Rosa fuerte */
+  --color5: #402B3A; /* Morado oscuro */
+  --color6: #fdfaf6; /* Beige claro */
+  --color7: #0C0C0C; /* Negro */
+
+  /* Variables de estilo para la fuente Comfortaa */
+  --font-family: 'Comfortaa', cursive;
+
+  /* Variables de estilo para los elementos */
+  --input-border-radius: 5px;
+  --input-border-color: var(--color5);
+  --input-width: 300px;
+  --input-height: 25px;
+  --input-background-color: var(--color6);
+  --input-font-size: 16px; /* Tamaño de fuente para input */
+
+  --button-border-radius: 20px;
+  --button-background-color: var(--color1);
+  --button-color: var(--color7);
+  --button-padding: 10px 20px;
+  --button-active-background-color: var(--color3);
+  --button-font-size: 16px; /* Tamaño de fuente para botón */
+
+  --subtitle-color: var(--color3);
+  --subtitle-font-size: 1.5em;
+  --subtitle-margin-bottom: 0.5em;
+
+  --header-background-color: var(--color5);
+  --header-color: var(--color6);
+  --header-padding: 20px;
+  --header-text-align: center;
+
+  /* Variables para los títulos de las aplicaciones */
+  --titulo-aplicacion-font-size: 2em;
+  --titulo-aplicacion-font-weight: bold;
+  --titulo-aplicacion-color: var(--color4);
+
+  /* Variables para el texto de botones e inputs */
+  --texto-boton-input-font-size: 1em;
+  --texto-boton-input-font-weight: normal;
+  --texto-boton-input-color: var(--color7);
+}
