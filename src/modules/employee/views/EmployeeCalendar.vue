@@ -3,24 +3,24 @@
 <template>
   <AdminLayout>
     <template v-slot:default>
-      <CalendarComponent v-if="showCalendar" />
+      <AppCalendar v-if="showCalendar" />
     </template>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
-import CalendarComponent from "@/components/CalendarComponent.vue";
+import AppCalendar from "@/components/AppCalendar.vue";
 
 export default {
   name: "EmployeeCalendar",
   components: {
     AdminLayout,
-    CalendarComponent,
+    AppCalendar,
   },
   data() {
     return {
-      showCalendar: false,
+      showCalendar: true,
     };
   },
 };

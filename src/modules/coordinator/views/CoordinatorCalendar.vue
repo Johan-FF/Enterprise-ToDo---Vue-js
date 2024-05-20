@@ -3,20 +3,20 @@
 <template>
   <AdminLayout>
     <template v-slot:default>
-      <CalendarComponent :editable="true" />
+      <AppCalendar :editable="true" />
     </template>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
-import CalendarComponent from "@/components/CalendarComponent.vue";
+import AppCalendar from "@/components/AppCalendar.vue";
 
 export default {
   name: "CoordinatorCalendar",
   components: {
     AdminLayout,
-    CalendarComponent,
+    AppCalendar,
   },
 };
 </script>

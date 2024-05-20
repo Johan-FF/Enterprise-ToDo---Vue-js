@@ -41,13 +41,6 @@
           Calendario
         </button>
         <button
-          @click="navigateToCalendar"
-          class="sidebar-button"
-        >
-          Calendario
-        </button>
-        <!-- Fin del nuevo botón -->
-        <button
           @click="navigate(`${user.generalRole}-tasks`)"
           class="sidebar-button"
         >
@@ -80,10 +73,6 @@ export default {
     },
     toggleNotifications() {
       this.showNotifications = !this.showNotifications;
-    },
-    navigateToCalendar() {
-      // Aquí puedes implementar la acción específica para el botón "Calendario"
-      this.$router.push({ name: `${this.user.generalRole}-calendar` });
     },
   },
 };
