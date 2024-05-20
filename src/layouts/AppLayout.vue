@@ -10,9 +10,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .layout {
-  padding-inline: 20%;
-  padding-bottom: 10%;
+  padding-inline: 10%;
+  width: 80%;
+  height: 70%;
 }
 </style>

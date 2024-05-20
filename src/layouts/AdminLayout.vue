@@ -40,7 +40,6 @@ export default {
 }
 
 .main-content {
-  padding: 1rem;
   background-color: var(--color1);
 }
 </style>
