@@ -1,19 +1,22 @@
+<!-- CoordinatorCalendar.vue -->
+
 <template>
   <AdminLayout>
-    <div class="coordinator-calendar">
-      <h2>Esta es una prueba de contenido de coordinator-calendar</h2>
-      <!-- Contenido de bienvenida para administradores -->
-    </div>
+    <template v-slot:default>
+      <CalendarComponent :editable="true" />
+    </template>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
+import CalendarComponent from "@/components/CalendarComponent.vue";
 
 export default {
   name: "CoordinatorCalendar",
   components: {
     AdminLayout,
+    CalendarComponent,
   },
 };
 </script>
