@@ -5,7 +5,7 @@ export default createStore({
     // Datos de prueba para simular el estado del usuario
     user: {
       name: "Usuario de Prueba",
-      generalRole: "admin", // Rol general del usuario (admin, coordinador, empleado)
+      generalRole: "employee", // Rol general del usuario (admin, coordinador, empleado)
       specificRole: "contador", // Rol específico dentro de la organización
     },
   },
