@@ -1,42 +1,66 @@
 <template>
   <div class="app-header">
-    <h1>
-      <span :style="orgStyle">Org</span>
-      <span :style="compStyle">Comp</span>
-    </h1>
+    <section>
+      <img
+        src="@/assets/logoOrgComp.png"
+        alt="Logo OrgComp"
+        class="logo-image"
+      />
+      <AppTitle />
+    </section>
+    <section>
+      <button @click="navigate(`register`)">Sobre nosotros</button>
+      <button @click="navigate(`login`)">Servicios</button>
+      <button @click="navigate(`login`)">Inicio de sesión</button>
+    </section>
   </div>
 </template>
 
 <script>
-// Importa tu archivo styles.css
-import '@/assets/styles.css';
+import "@/assets/styles.css";
+import AppTitle from "@/components/AppTitle.vue";
 
 export default {
   name: "AppHeader",
-  data() {
-    return {
-      orgStyle: {
-        color: "var(--color7)", // Utilizando la variable de color para el texto de organización
-        fontWeight: 1000,
-      },
-      compStyle: {
-        color: "var(--color6)", // Utilizando la variable de color para el texto de compañía
-        fontWeight: 1000,
-      },
-    };
+  components: { AppTitle },
+  methods: {
+    navigate(page) {
+      this.$router.push({ name: page });
+    },
   },
 };
 </script>
 
 <style scoped>
-/* Aquí puedes seguir definiendo estilos específicos para este componente */
 .app-header {
-  background-color: var(--header-background-color); /* Utilizando la variable de color de fondo del encabezado */
-  font-family: var(--font-family); /* Utilizando la variable de fuente Comfortaa */
-  padding: 5px;
+  background-color: var(--header-background-color);
+  font-family: var(--font-family);
+  padding-inline: 5px;
   text-align: center;
-  font-size: var(--subtitle-font-size); /* Utilizando la variable de tamaño de fuente para subtítulos */
-  border-radius: var(--button-border-radius); /* Utilizando la variable de radio de borde para botones */
-  height: min-content;
+  font-size: var(--subtitle-font-size);
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.app-header section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  height: 50px;
+}
+
+button {
+  border-radius: 16px;
+  font-family: var(--font-comfortaa);
+  background-color: var(--color1);
+  color: var(--color7);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-inline: 5%;
 }
 </style>

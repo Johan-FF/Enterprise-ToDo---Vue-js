@@ -8,7 +8,7 @@
           </th>
         </tr>
       </thead>
-      <thead>
+      <tbody>
         <tr v-for="(element, i) of content" :key="`element - ${i}`">
           <td
             v-for="(value, j) in Object.values(element)"
@@ -17,7 +17,7 @@
             {{ value }}
           </td>
         </tr>
-      </thead>
+      </tbody>
     </table>
   </div>
 </template>
@@ -40,8 +40,8 @@ export default {
 #table-container {
   width: 100%;
   max-width: 100%;
-  height: 80%;
-  max-height: 80%;
+  height: 64vh;
+  max-height: 64vh;
   overflow: auto;
 }
 /* Estilo general de la barra de desplazamiento */
@@ -72,5 +72,46 @@ export default {
 }
 table {
   margin-top: 16px;
+  width: 100%;
+  max-height: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+tr {
+  width: 100%;
+  border-radius: 32px;
+  box-shadow: 0 0 10px black;
+  overflow: hidden;
+}
+
+tr td {
+  border: none;
+}
+
+th,
+td {
+  padding-block: 1%;
+  min-width: 100px;
+}
+
+th {
+  background-color: var(--color4);
+}
+
+td {
+  background-color: var(--color3);
+}
+
+tr td:last-child,
+tr th:last-child {
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+}
+
+tr td:nth-child(1),
+tr th:nth-child(1) {
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
 }
 </style>

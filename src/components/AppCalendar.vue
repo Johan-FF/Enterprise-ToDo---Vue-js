@@ -1,5 +1,7 @@
 <template>
-  <FullCalendar :options="calendarOptions" />
+  <div id="app-calendar">
+    <FullCalendar :options="calendarOptions" />
+  </div>
 </template>
 
 <script>
@@ -68,5 +70,11 @@ export default {
   /* the calendar root */
   max-width: 80%;
   margin: 0 auto;
+}
+
+#app-calendar {
+  padding: 1%;
+  border-radius: 32px;
+  background-color: var(--color3);
 }
 </style>
