@@ -4,7 +4,7 @@
     <div id="modal-main" v-if="isCreateModalVisible || isDetailModalVisible">
       <div id="modal-container">
         <div v-if="isCreateModalVisible">
-          <CreateEvent :date="selectedDate" @create-event="addEvent" />
+          <CreateEvent :date="selectedDate" @create-event="addEvent" @close="isCreateModalVisible = false" />
         </div>
         <div v-if="isDetailModalVisible">
           <EventDetails
@@ -193,6 +193,8 @@ export default {
     closeEventDetails() {
       this.isDetailModalVisible = false;
       this.selectedEvent = null;
+      this.isCreateModalVisible = false; // Add this line
+      this.isEditModalVisible = false;
     },
   },
 };
