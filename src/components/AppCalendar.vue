@@ -25,6 +25,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import CreateEvent from './CreateEvent.vue';
 import EventDetails from './EventDetails.vue';
 import CreateForm from './CreateForm.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppCalendar',
@@ -61,10 +62,23 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters(['generalRole'])
+  },
   methods: {
     handleDateClick(info) {
-      this.selectedDate = info.startStr;
-      this.isCreateModalVisible = true;
+      const selectedDatetime = new Date(info.startStr);
+      const currentDatetime = new Date();
+      if (selectedDatetime < currentDatetime) {
+        console.warn('No se pueden agregar eventos en el pasado');
+        return;
+      }
+      if (this.generalRole === 'coordinator') {
+        this.selectedDate = info.startStr;
+        this.isCreateModalVisible = true;
+      } else {
+        console.warn('Solo los coordinadores pueden agregar eventos');
+      }
     },
     handleEventClick(info) {
       this.selectedEvent = { ...info.event.extendedProps }; 
@@ -85,17 +99,21 @@ export default {
       }
     },
     openEditModal(event) {
-      this.editFields = [
-        { name: 'eventName', label: 'Nombre del Evento', type: 'text', placeholder: 'Ingrese el nombre del evento', value: event.title },
-        { name: 'projectType', label: 'Proyecto', type: 'select', options: [{ text: 'Proyecto 1', value: 'project1' }, { text: 'Proyecto 2', value: 'project2' }], value: event.projectType },
-        { name: 'eventType', label: 'Tipo de Evento', type: 'select', options: [{ text: 'Tarea', value: 'task' }, { text: 'Reunión', value: 'meeting' }, { text: 'Evento', value: 'event' }], value: event.eventType },
-        { name: 'description', label: 'Descripción', type: 'textarea', placeholder: 'Ingrese una descripción', value: event.description },
-        { name: 'time', label: 'Hora', type: 'time', value: event.time },
-        { name: 'participants', label: 'Participantes', type: 'select', options: [{ text: 'Usuario 1', value: 'user1' }, { text: 'Usuario 2', value: 'user2' }], multiple: true, value: event.participants },
-        { name: 'meetingLink', label: 'Link de la Reunión', type: 'text', placeholder: 'Ingrese el link de la reunión', value: event.meetingLink }
-      ];
-      this.isEditModalVisible = true;
-      this.isDetailModalVisible = false;
+      if (this.generalRole === 'coordinator') {
+        this.editFields = [
+          { name: 'eventName', label: 'Nombre del Evento', type: 'text', placeholder: 'Ingrese el nombre del evento', value: event.title },
+          { name: 'projectType', label: 'Proyecto', type: 'select', options: [{ text: 'Proyecto 1', value: 'project1' }, { text: 'Proyecto 2', value: 'project2' }], value: event.projectType },
+          { name: 'eventType', label: 'Tipo de Evento', type: 'select', options: [{ text: 'Tarea', value: 'task' }, { text: 'Reunión', value: 'meeting' }, { text: 'Evento', value: 'event' }], value: event.eventType },
+          { name: 'description', label: 'Descripción', type: 'textarea', placeholder: 'Ingrese una descripción', value: event.description },
+          { name: 'time', label: 'Hora', type: 'time', value: event.time },
+          { name: 'participants', label: 'Participantes', type: 'select', options: [{ text: 'Usuario 1', value: 'user1' }, { text: 'Usuario 2', value: 'user2' }], multiple: true, value: event.participants },
+          { name: 'meetingLink', label: 'Link de la Reunión', type: 'text', placeholder: 'Ingrese el link de la reunión', value: event.meetingLink }
+        ];
+        this.isEditModalVisible = true;
+        this.isDetailModalVisible = false;
+      } else {
+        console.warn('Solo los coordinadores pueden editar eventos');
+      }
     },
     updateEvent(updatedEvent) {
       const index = this.calendarOptions.events.findIndex(event => event.title === this.selectedEvent.title);
@@ -109,8 +127,12 @@ export default {
       this.isEditModalVisible = false;
     },
     deleteEvent(event) {
-      this.calendarOptions.events = this.calendarOptions.events.filter(e => e.title !== event.title);
-      this.isDetailModalVisible = false;
+      if (this.generalRole === 'coordinator') {
+        this.calendarOptions.events = this.calendarOptions.events.filter(e => e.title !== event.title);
+        this.isDetailModalVisible = false;
+      } else {
+        console.warn('Solo los coordinadores pueden eliminar eventos');
+      }
     },
     closeEventDetails() {
       this.isDetailModalVisible = false;

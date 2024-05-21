@@ -34,7 +34,6 @@
             Notificaciones
           </button>
           <div v-if="showNotifications" class="notifications">
-            <!-- Aquí puedes listar las notificaciones -->
             <p>Notificación 1</p>
             <p>Notificación 2</p>
           </div>
@@ -107,10 +106,11 @@ export default {
 
 <style scoped>
 .sidebar {
-  background-color: var(--skin-color);
+  background-color: var(--color2); /* Morado claro */
   padding: 10px;
   display: grid;
-  grid-template-rows: 30% 60% 10%;
+  grid-template-rows: 20% 60% 10%;
+  border: 3px solid var(--color7);
 }
 
 .sidebar section:nth-child(1) {
@@ -123,7 +123,8 @@ export default {
 }
 
 .logo-image {
-  height: 50%;
+  height: 40%;
+  border: px solid var(--color7);
 }
 
 .sidebar section:nth-child(2) {
@@ -139,15 +140,14 @@ export default {
   padding: 10px;
   text-align: center;
   border-radius: 16px;
-  background-color: var(--button-background-color);
-  color: var(--button-color);
-  border: 1px solid var(--input-border-color);
+  background-color: var(--color1); /* Amarillo pastel */
+  color: var(--color7); /* Azul oscuro */
+  border: 1px solid var(--color5); /* Morado claro */
   cursor: pointer;
 }
-
 .notifications {
-  background-color: var(--input-background-color);
-  border: 1px solid var(--input-border-color);
+  background-color: var(--color6); /* Blanco */
+  border: 1px solid var(--color5); /* Morado claro */
   padding: 10px;
   margin-top: 5px;
 }

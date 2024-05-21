@@ -1,24 +1,27 @@
 <template>
   <AdminLayout>
     <div class="employee-welcome">
-      <h2>Esta es una prueba de contenido de employee-welcome</h2>
-      <!-- Contenido de bienvenida para administradores -->
+      <WelcomeMessage />
     </div>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
+import WelcomeMessage from "@/components/WelcomeMessage.vue";
 
 export default {
   name: "EmployeeWelcome",
   components: {
     AdminLayout,
+    WelcomeMessage,
   },
 };
 </script>
 
 <style scoped>
+@import "@/assets/styles.css";
+
 .employee-welcome {
   padding: 20px;
   background-color: var(--color2);

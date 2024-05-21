@@ -128,7 +128,7 @@ export default {
 
 <style scoped>
 #register-view {
-  background-color: var(--color2);
+  background-color: var(--color6);
   height: 100%;
   padding-bottom: 5%;
 }

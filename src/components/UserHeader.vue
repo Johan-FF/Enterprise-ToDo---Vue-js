@@ -22,9 +22,11 @@ export default {
 
 <style scoped>
 .user-header {
-  background-color: var(--color1);
+  background-color: var(--color5); /* Morado claro */
   padding: 1rem;
   text-align: center;
-  width: 90%;
+  width: 100%;
+  color: var(--color6); /* Blanco */
+  border: 3px solid var(--color7);
 }
 </style>

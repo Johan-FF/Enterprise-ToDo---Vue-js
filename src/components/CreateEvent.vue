@@ -1,6 +1,10 @@
 <template>
-  <div class="create-event-container">
-    <h2 class="create-event-title">Crear Nuevo Evento</h2>
+  <div v-if="isVisible" class="create-event-container">
+    <div class="create-event-header">
+      <button class="close-btn" @click="closeModal">X</button>
+      <h2 class="create-event-title">Crear Nuevo Evento</h2>
+      <span v-if="date" class="create-event-date">{{ formatDate(date) }}</span>
+    </div>
     <form @submit.prevent="handleSubmit" class="create-event-form">
       <div class="form-group">
         <label for="eventName" class="form-label">Nombre del Evento:</label>
@@ -55,8 +59,15 @@
 
 <script>
 export default {
+  props: {
+    date: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
+      isVisible: true,
       formData: {
         eventName: '',
         projectType: '',
@@ -90,6 +101,14 @@ export default {
     },
     removeParticipant(index) {
       this.formData.participants.splice(index, 1);
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString();
+    },
+    closeModal() {
+      this.isVisible = false;
+      this.$emit('close');
     }
   },
   watch: {
@@ -110,6 +129,26 @@ export default {
 .create-event-title {
   font-size: var(--subtitle-font-size);
   margin-bottom: var(--subtitle-margin-bottom);
+}
+.create-event-date {
+  font-size: var(--small-font-size);
+  color: var(--secondary-text-color);
+}
+.create-event-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: var(--button-font-size);
+  color: var(--button-color);
+  cursor: pointer;
 }
 
 .create-event-form {

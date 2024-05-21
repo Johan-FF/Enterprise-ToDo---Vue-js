@@ -40,6 +40,6 @@ export default {
 }
 
 .main-content {
-  background-color: var(--color1);
+  background-color: var(--color6); /* Blanco */
 }
 </style>
