@@ -20,7 +20,7 @@ const employeeRoutes = [
     component: EmployeeCalendar,
   },
   {
-    path: "/tasks",
+    path: "/tasks/:projectName",
     name: "employee-tasks",
     component: EmployeeTasks,
   },

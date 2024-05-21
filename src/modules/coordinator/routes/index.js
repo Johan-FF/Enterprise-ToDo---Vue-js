@@ -20,7 +20,7 @@ const coordinatorRoutes = [
     component: CoordinatorCalendar,
   },
   {
-    path: "/tasks",
+    path: "/tasks/:projectName",
     name: "coordinator-tasks",
     component: CoordinatorTasks,
   },

@@ -1,7 +1,12 @@
 <template>
   <AdminLayout>
     <div class="coordinator-projects">
-      <CrudLayout />
+      <CrudLayout
+        :fields="fieldsNewForm"
+        @submit="handleProjectSubmit"
+        :content="content"
+        :itsProjects="true"
+      />
     </div>
   </AdminLayout>
 </template>
@@ -15,6 +20,47 @@ export default {
   components: {
     AdminLayout,
     CrudLayout,
+  },
+  data() {
+    return {
+      fieldsNewForm: [
+        {
+          name: "projectName",
+          label: "Nombre del Proyecto",
+          type: "text",
+          placeholder: "Ingrese el nombre del proyecto",
+        },
+        {
+          name: "description",
+          label: "Descripción del Proyecto",
+          type: "textarea",
+          placeholder: "Ingrese una descripción",
+        },
+        {
+          name: "participants",
+          label: "Participantes",
+          type: "select",
+          options: this.getParticipantsOptions(),
+          multiple: true,
+        },
+      ],
+      content: [
+        { name: "Juan", description: 30, city: "Madrid" },
+        { name: "Ana", description: 25, city: "Barcelona" },
+        { name: "Luis", description: 35, city: "Sevilla" },
+      ],
+    };
+  },
+  methods: {
+    getParticipantsOptions() {
+      return [
+        { value: "user1", text: "Usuario 1" },
+        { value: "user2", text: "Usuario 2" },
+      ];
+    },
+    handleProjectSubmit(formData) {
+      console.log("Project Form submitted:", formData);
+    },
   },
 };
 </script>

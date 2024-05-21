@@ -1,7 +1,11 @@
 <template>
   <AdminLayout>
     <div class="employee-projects">
-      <CrudLayout />
+      <CrudLayout
+        :viewAddButton="false"
+        :content="content"
+        :itsProjects="true"
+      />
     </div>
   </AdminLayout>
 </template>
@@ -15,6 +19,15 @@ export default {
   components: {
     AdminLayout,
     CrudLayout,
+  },
+  data() {
+    return {
+      content: [
+        { name: "Juan", description: 30, city: "Madrid" },
+        { name: "Ana", description: 25, city: "Barcelona" },
+        { name: "Luis", description: 35, city: "Sevilla" },
+      ],
+    };
   },
 };
 </script>

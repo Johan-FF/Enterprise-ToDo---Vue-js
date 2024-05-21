@@ -30,14 +30,6 @@
             user.generalRole === 'employee'
           "
         >
-          <button @click="toggleNotifications" class="sidebar-button">
-            Notificaciones
-          </button>
-          <div v-if="showNotifications" class="notifications">
-            <!-- Aquí puedes listar las notificaciones -->
-            <p>Notificación 1</p>
-            <p>Notificación 2</p>
-          </div>
           <button
             @click="navigate(`${user.generalRole}-projects`)"
             class="sidebar-button"
@@ -49,12 +41,6 @@
             class="sidebar-button"
           >
             Calendario
-          </button>
-          <button
-            @click="navigate(`${user.generalRole}-tasks`)"
-            class="sidebar-button"
-          >
-            Tareas
           </button>
         </template>
       </template>
@@ -97,9 +83,6 @@ export default {
     navigate(page) {
       // Aquí puedes implementar la lógica para la navegación
       this.$router.push({ name: page });
-    },
-    toggleNotifications() {
-      this.showNotifications = !this.showNotifications;
     },
   },
 };

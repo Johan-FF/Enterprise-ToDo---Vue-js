@@ -1,7 +1,7 @@
 <template>
   <AdminLayout>
     <div class="admin-roles">
-      <CrudLayout />
+      <CrudLayout :fields="fieldsNewForm" @submit="handleRoleSubmit" />
     </div>
   </AdminLayout>
 </template>
@@ -15,6 +15,30 @@ export default {
   components: {
     AdminLayout,
     CrudLayout,
+  },
+  data() {
+    return {
+      fieldsNewForm: [
+        {
+          name: "roleName",
+          label: "Nombre del Rol",
+          type: "text",
+          placeholder: "Ingrese el nombre del rol",
+        },
+        { name: "isCoordinator", label: "Es Coordinador", type: "checkbox" },
+        {
+          name: "description",
+          label: "Descripción",
+          type: "textarea",
+          placeholder: "Ingrese una descripción",
+        },
+      ],
+    };
+  },
+  methods: {
+    handleRoleSubmit(formData) {
+      console.log("Role Form submitted:", formData);
+    },
   },
 };
 </script>

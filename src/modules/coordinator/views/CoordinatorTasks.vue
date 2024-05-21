@@ -1,20 +1,26 @@
 <template>
   <AdminLayout>
     <div class="coordinator-tasks">
-      <CrudLayout />
+      <h2>{{ title }}</h2>
+      <TasksProgress />
     </div>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
-import CrudLayout from "@/layouts/CrudLayout.vue";
+import TasksProgress from "@/components/TasksProgress.vue";
 
 export default {
   name: "CoordinatorTasks",
   components: {
     AdminLayout,
-    CrudLayout,
+    TasksProgress,
+  },
+  data() {
+    return {
+      title: this.$route.params.projectName,
+    };
   },
 };
 </script>

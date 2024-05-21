@@ -1,23 +1,26 @@
 <template>
   <div class="crud-container">
-    <div>
-      <AppSearch />
+    <template v-if="viewAddButton">
       <button @click="changeTypeOfContent" id="add-button">
         {{ typeOfContent === "table" ? "Agregar" : "Volver" }}
       </button>
-    </div>
+    </template>
 
     <template v-if="typeOfContent === 'table'">
-      <AppTable :headers="headers" :content="content" />
+      <AppTable
+        :headers="headers"
+        :content="localContent"
+        :itsProjects="itsProjects"
+        :typeOfContent="typeOfContent"
+      />
     </template>
-    <template v-if="typeOfContent === 'form'">
-      <CreateForm />
+    <template v-else-if="typeOfContent === 'form'">
+      <CreateForm :fields="fields" />
     </template>
   </div>
 </template>
 
 <script>
-import AppSearch from "@/components/AppSearch.vue";
 import AppTable from "@/components/AppTable.vue";
 import CreateForm from "@/components/CreateForm.vue";
 
@@ -26,23 +29,37 @@ export default {
   data() {
     return {
       typeOfContent: "table",
+      currentSearch: "",
+      localContent: this.content,
     };
   },
+  computed: {
+    filteredItems() {
+      return this.content.filter((item) => {
+        const itemValuesString = Object.values(item).join(" ").toLowerCase();
+        return itemValuesString.includes(this.currentSearch.toLowerCase());
+      });
+    },
+  },
   components: {
-    AppSearch,
     AppTable,
     CreateForm,
   },
   props: {
     headers: {
-      default: ["Nombre", "Edad", "Ciudad", ""],
+      default: ["Nombre", "Descripción", "Participantes", ""],
     },
     content: {
-      default: [
-        { nombre: "Juan", edad: 30, ciudad: "Madrid" },
-        { nombre: "Ana", edad: 25, ciudad: "Barcelona" },
-        { nombre: "Luis", edad: 35, ciudad: "Sevilla" },
-      ],
+      require: true,
+    },
+    fields: {
+      require: true,
+    },
+    viewAddButton: {
+      default: true,
+    },
+    itsProjects: {
+      default: false,
     },
   },
   methods: {
@@ -57,8 +74,6 @@ export default {
 .crud-container {
   height: 100%;
   width: 100%;
-  display: grid;
-  grid-template-rows: 10% 90%;
 }
 .crud-container div:nth-child(1) {
   display: flex;
@@ -66,6 +81,8 @@ export default {
   align-items: center;
 }
 #add-button {
+  position: fixed;
+  right: 8%;
   height: fit-content;
   padding: 8px;
   cursor: pointer;

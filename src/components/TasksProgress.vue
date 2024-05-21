@@ -77,7 +77,7 @@
 
 <script>
 export default {
-  name: "TasksProgressEmployee",
+  name: "TasksProgress",
   data() {
     return {
       localInitial: this.initial,
@@ -192,14 +192,14 @@ export default {
 <style scoped>
 #tasks-progress {
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: grid;
   grid-template-columns: 33% 33% 33%;
 }
 
 section {
   padding: 2%;
-  height: 70vh;
+  height: 60vh;
   overflow-y: auto;
 }
 

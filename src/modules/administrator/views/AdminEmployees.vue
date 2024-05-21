@@ -1,7 +1,7 @@
 <template>
   <AdminLayout>
     <div class="admin-employee">
-      <CrudLayout />
+      <CrudLayout :fields="fieldsNewForm" @submit="handleUserSubmit" />
     </div>
   </AdminLayout>
 </template>
@@ -15,6 +15,50 @@ export default {
   components: {
     AdminLayout,
     CrudLayout,
+  },
+  data() {
+    return {
+      fieldsNewForm: [
+        {
+          name: "firstName",
+          label: "Nombre",
+          type: "text",
+          placeholder: "Ingrese su nombre",
+        },
+        {
+          name: "lastName",
+          label: "Apellido",
+          type: "text",
+          placeholder: "Ingrese su apellido",
+        },
+        {
+          name: "email",
+          label: "Correo",
+          type: "email",
+          placeholder: "Ingrese su correo",
+        },
+        {
+          name: "cedula",
+          label: "Cédula",
+          type: "text",
+          placeholder: "Ingrese su cédula",
+        },
+        {
+          name: "role",
+          label: "Rol",
+          type: "select",
+          options: [
+            { value: "admin", text: "Administrador" },
+            { value: "user", text: "Usuario" },
+          ],
+        },
+      ],
+    };
+  },
+  methods: {
+    handleUserSubmit(formData) {
+      console.log("User Form submitted:", formData);
+    },
   },
 };
 </script>
