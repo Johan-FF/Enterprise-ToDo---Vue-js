@@ -1,7 +1,11 @@
 <template>
   <AdminLayout>
     <div class="admin-employee">
-      <CrudLayout :fields="fieldsNewForm" @submit="handleUserSubmit" />
+      <CrudLayout
+        :fields="fieldsNewForm"
+        @submit="handleUserSubmit"
+        :content="content"
+      />
     </div>
   </AdminLayout>
 </template>
@@ -52,6 +56,11 @@ export default {
             { value: "user", text: "Usuario" },
           ],
         },
+      ],
+      content: [
+        { name: "Juan", description: 30, city: "Madrid" },
+        { name: "Ana", description: 25, city: "Barcelona" },
+        { name: "Luis", description: 35, city: "Sevilla" },
       ],
     };
   },

@@ -1,7 +1,11 @@
 <template>
   <AdminLayout>
     <div class="admin-roles">
-      <CrudLayout :fields="fieldsNewForm" @submit="handleRoleSubmit" />
+      <CrudLayout
+        :fields="fieldsNewForm"
+        @submit="handleRoleSubmit"
+        :content="content"
+      />
     </div>
   </AdminLayout>
 </template>
@@ -32,6 +36,11 @@ export default {
           type: "textarea",
           placeholder: "Ingrese una descripción",
         },
+      ],
+      content: [
+        { name: "Juan", description: 30, city: "Madrid" },
+        { name: "Ana", description: 25, city: "Barcelona" },
+        { name: "Luis", description: 35, city: "Sevilla" },
       ],
     };
   },

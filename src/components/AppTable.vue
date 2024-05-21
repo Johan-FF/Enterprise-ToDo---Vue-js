@@ -42,7 +42,9 @@
             {{ value }}
           </td>
           <td>
-            <template v-if="generalRole === 'coordinator'">
+            <template
+              v-if="generalRole === 'coordinator' || generalRole === 'admin'"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="1.5rem"
