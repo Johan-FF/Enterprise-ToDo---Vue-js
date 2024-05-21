@@ -2,7 +2,7 @@
   <div class="crud-container">
     <div>
       <AppSearch />
-      <button id="add-button">Add</button>
+      <button id="add-button">Agregar</button>
     </div>
     <AppTable :headers="headers" :content="content" />
   </div>
@@ -20,7 +20,7 @@ export default {
   },
   props: {
     headers: {
-      default: ["Nombre", "Edad", "Ciudad"],
+      default: ["Nombre", "Edad", "Ciudad", ""],
     },
     content: {
       default: [

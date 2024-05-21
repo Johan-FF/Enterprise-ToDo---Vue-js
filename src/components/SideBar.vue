@@ -13,7 +13,7 @@
         @click="navigate(`${user.generalRole}-welcome`)"
         class="sidebar-button"
       >
-        Home
+        Inicio
       </button>
       <template v-if="user">
         <template v-if="user.generalRole === 'admin'">
