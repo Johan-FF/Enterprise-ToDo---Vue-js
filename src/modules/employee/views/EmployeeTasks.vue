@@ -1,20 +1,20 @@
 <template>
   <AdminLayout>
     <div class="employee-tasks">
-      <CrudLayout />
+      <TasksProgressEmployee />
     </div>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
-import CrudLayout from "@/layouts/CrudLayout.vue";
+import TasksProgressEmployee from "../components/TasksProgressEmployee.vue";
 
 export default {
   name: "EmployeeTasks",
   components: {
     AdminLayout,
-    CrudLayout,
+    TasksProgressEmployee,
   },
 };
 </script>

@@ -2,21 +2,36 @@
   <div class="crud-container">
     <div>
       <AppSearch />
-      <button id="add-button">Agregar</button>
+      <button @click="changeTypeOfContent" id="add-button">
+        {{ typeOfContent === "table" ? "Agregar" : "Volver" }}
+      </button>
     </div>
-    <AppTable :headers="headers" :content="content" />
+
+    <template v-if="typeOfContent === 'table'">
+      <AppTable :headers="headers" :content="content" />
+    </template>
+    <template v-if="typeOfContent === 'form'">
+      <CreateForm />
+    </template>
   </div>
 </template>
 
 <script>
 import AppSearch from "@/components/AppSearch.vue";
 import AppTable from "@/components/AppTable.vue";
+import CreateForm from "@/components/CreateForm.vue";
 
 export default {
   name: "CrudLayout",
+  data() {
+    return {
+      typeOfContent: "table",
+    };
+  },
   components: {
     AppSearch,
     AppTable,
+    CreateForm,
   },
   props: {
     headers: {
@@ -28,6 +43,11 @@ export default {
         { nombre: "Ana", edad: 25, ciudad: "Barcelona" },
         { nombre: "Luis", edad: 35, ciudad: "Sevilla" },
       ],
+    },
+  },
+  methods: {
+    changeTypeOfContent() {
+      this.typeOfContent = this.typeOfContent === "table" ? "form" : "table";
     },
   },
 };

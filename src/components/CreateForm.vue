@@ -4,7 +4,12 @@
       <div v-for="(field, index) in fields" :key="index" class="form-field">
         <label :for="field.name">{{ field.label }}</label>
         <input
-          v-if="field.type === 'text' || field.type === 'email' || field.type === 'password' || field.type === 'time'"
+          v-if="
+            field.type === 'text' ||
+            field.type === 'email' ||
+            field.type === 'password' ||
+            field.type === 'time'
+          "
           :type="field.type"
           :name="field.name"
           v-model="formData[field.name]"
@@ -21,7 +26,11 @@
           :name="field.name"
           v-model="formData[field.name]"
         >
-          <option v-for="option in field.options" :value="option.value" :key="option.value">
+          <option
+            v-for="option in field.options"
+            :value="option.value"
+            :key="option.value"
+          >
             {{ option.text }}
           </option>
         </select>
@@ -44,12 +53,47 @@ export default {
     fields: {
       type: Array,
       required: true,
+      default: () => [
+        {
+          name: "firstName",
+          label: "Nombre",
+          type: "text",
+          placeholder: "Ingrese su nombre",
+        },
+        {
+          name: "lastName",
+          label: "Apellido",
+          type: "text",
+          placeholder: "Ingrese su apellido",
+        },
+        {
+          name: "email",
+          label: "Correo",
+          type: "email",
+          placeholder: "Ingrese su correo",
+        },
+        {
+          name: "cedula",
+          label: "Cédula",
+          type: "text",
+          placeholder: "Ingrese su cédula",
+        },
+        {
+          name: "role",
+          label: "Rol",
+          type: "select",
+          options: [
+            { value: "admin", text: "Administrador" },
+            { value: "user", text: "Usuario" },
+          ],
+        },
+      ],
     },
   },
   data() {
     const formData = {};
-    this.fields.forEach(field => {
-      formData[field.name] = field.type === 'checkbox' ? false : '';
+    this.fields.forEach((field) => {
+      formData[field.name] = field.type === "checkbox" ? false : "";
     });
     return {
       formData,
@@ -58,7 +102,7 @@ export default {
   methods: {
     handleSubmit() {
       console.log(this.formData);
-      this.$emit('submit', this.formData);
+      this.$emit("submit", this.formData);
     },
   },
 };
