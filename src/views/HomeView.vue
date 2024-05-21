@@ -1,3 +1,4 @@
+<!-- src\views\HomeView.vue -->
 <template>
   <div class="home-view">
     <AppHeader />
@@ -55,7 +56,7 @@ export default {
 
 <style scoped>
 .home-view {
-  background-color: var(--color2);
+  background-color: var(--color6);
   width: 100%;
   height: 100vh;
   display: grid;

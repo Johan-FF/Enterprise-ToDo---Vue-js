@@ -88,6 +88,6 @@ export default {
   cursor: pointer;
   border-radius: 16px;
   border-width: 1px;
-  background-color: var(--color1);
+  background-color: var(--color6);
 }
 </style>

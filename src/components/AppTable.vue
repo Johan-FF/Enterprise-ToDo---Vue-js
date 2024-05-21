@@ -187,23 +187,23 @@ export default {
 
 /* Fondo de la barra de desplazamiento */
 #table-container::-webkit-scrollbar-track {
-  background: var(--color2); /* Color de fondo del track */
+  background: var(--color2); /* Naranja pastel */
 }
 
 /* Estilo del thumb (la parte movible) */
 #table-container::-webkit-scrollbar-thumb {
-  background: var(--color3); /* Color del thumb */
+  background: var(--color3); /* Rosa pastel */
   border-radius: 6px; /* Bordes redondeados */
 }
 
 /* Estilo del thumb cuando se encuentra en estado hover */
 #table-container::-webkit-scrollbar-thumb:hover {
-  background: var(--color4); /* Color del thumb en hover */
+  background: var(--color4); /* Rosa salmón */
 }
 
 /* Opcional: Cambiar el color del thumb cuando es activo */
 #table-container::-webkit-scrollbar-thumb:active {
-  background: var(--color5); /* Color del thumb cuando es activo */
+  background: var(--color5); /* Morado claro */
 }
 table {
   margin-top: 16px;
@@ -229,10 +229,18 @@ tr:hover td {
   background-color: var(--color1);
 }
 
-th,
+tr:hover td {
+  background-color: var(--color1);
+}
+
+th {
+  background-color: var(--color4); /* Rosa salmón */
+  color: var(--color6); /* Blanco */
+}
+
 td {
-  padding-block: 1%;
-  min-width: 100px;
+  background-color: var(--color3); /* Rosa pastel */
+  color: var(--color7); /* Azul oscuro */
 }
 
 th {
@@ -260,6 +268,7 @@ tr td:last-child svg {
   padding: 2px;
   border-radius: 4px;
   cursor: pointer;
-  background-color: var(--color4);
+  background-color: var(--color4); /* Rosa salmón */
+  color: var(--color6); /* Blanco */
 }
 </style>

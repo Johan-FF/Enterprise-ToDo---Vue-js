@@ -21,6 +21,7 @@
           v-model="formData[field.name]"
           :placeholder="field.placeholder"
         ></textarea>
+
         <select
           v-else-if="field.type === 'select'"
           :name="field.name"
@@ -34,6 +35,29 @@
             {{ option.text }}
           </option>
         </select>
+        <div
+          v-else-if="field.type === 'select' && field.name === 'participants'"
+          class="participants-field"
+        >
+          <label>{{ field.label }}</label>
+          <div class="selected-participants">
+            <div
+              v-for="(participant, index) in formData[field.name]"
+              :key="index"
+              class="selected-participant"
+            >
+              {{ participant }}
+              <button type="button" @click="removeParticipant(index)">x</button>
+            </div>
+          </div>
+          <input
+            type="text"
+            v-model="newParticipant"
+            placeholder="Agregar participante"
+            @keyup.enter="addParticipant"
+          />
+          <button type="button" @click="addParticipant">Agregar</button>
+        </div>
         <input
           v-else-if="field.type === 'checkbox'"
           type="checkbox"
@@ -93,16 +117,41 @@ export default {
   data() {
     const formData = {};
     this.fields.forEach((field) => {
-      formData[field.name] = field.type === "checkbox" ? false : "";
+      formData[field.name] =
+        field.type === "checkbox" ? false : field.multiple ? [] : "";
     });
     return {
       formData,
+      newParticipant: "",
     };
   },
   methods: {
     handleSubmit() {
-      console.log(this.formData);
       this.$emit("submit", this.formData);
+    },
+    addParticipant() {
+      if (
+        this.newParticipant.trim() &&
+        !this.formData.participants.includes(this.newParticipant.trim())
+      ) {
+        this.formData.participants.push(this.newParticipant.trim());
+        this.newParticipant = "";
+      }
+    },
+    removeParticipant(index) {
+      this.formData.participants.splice(index, 1);
+    },
+    addParticipant() {
+      if (
+        this.newParticipant.trim() &&
+        !this.formData.participants.includes(this.newParticipant.trim())
+      ) {
+        this.formData.participants.push(this.newParticipant.trim());
+        this.newParticipant = "";
+      }
+    },
+    removeParticipant(index) {
+      this.formData.participants.splice(index, 1);
     },
   },
 };
@@ -110,39 +159,79 @@ export default {
 
 <style scoped>
 #form-container {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 70%;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 5% auto 0 auto;
+  background-color: var(--color6);
 }
 
 .form-field {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.form-field label {
+label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   font-weight: bold;
 }
 
-.form-field input,
-.form-field textarea,
-.form-field select {
+input,
+textarea,
+select {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--color5);
+  background-color: var(--color6);
+  font-family: var(--font-family);
+}
+
+textarea {
+  resize: vertical;
 }
 
 button {
-  padding: 10px 20px;
+  border-radius: 20px;
   background-color: var(--color3);
-  color: white;
+  color: var(--color7);
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-button:hover {
+button:active {
   background-color: var(--color4);
+}
+
+.participants-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-participants {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.selected-participant {
+  background-color: var(--color3);
+  color: var(--color7);
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.selected-participant button {
+  background: none;
+  border: none;
+  color: var(--color7);
+  margin-left: 10px;
+  cursor: pointer;
 }
 </style>

@@ -67,7 +67,7 @@ export default {
 
 <style scoped>
 #login-view {
-  background-color: var(--color2);
+  background-color: var(--color6);
   height: 90vh;
   padding-bottom: 5%;
 }

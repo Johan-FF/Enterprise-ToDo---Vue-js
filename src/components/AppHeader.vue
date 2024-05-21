@@ -33,13 +33,14 @@ export default {
 
 <style scoped>
 .app-header {
-  background-color: var(--header-background-color);
+  background-color: var(--color5); /* Morado claro */
   font-family: var(--font-family);
   padding-inline: 5px;
   text-align: center;
   font-size: var(--subtitle-font-size);
   display: grid;
   grid-template-columns: 30% 70%;
+  color: var(--color6); /* Blanco */
 }
 
 .app-header section {
@@ -54,9 +55,9 @@ export default {
 
 button {
   border-radius: 16px;
-  font-family: var(--font-comfortaa);
-  background-color: var(--color1);
-  color: var(--color7);
+  font-family: var(--font-family);
+  background-color: var(--color1); /* Amarillo pastel */
+  color: var(--color7); /* Azul oscuro */
   border: none;
   padding: 10px 20px;
   cursor: pointer;

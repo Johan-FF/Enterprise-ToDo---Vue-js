@@ -1,8 +1,6 @@
 <template>
   <AdminLayout>
     <div class="coordinator-welcome">
-      <h2>Esta es una prueba de contenido de coordinator-welcome</h2>
-      <!-- Contenido de bienvenida para administradores -->
     </div>
   </AdminLayout>
 </template>

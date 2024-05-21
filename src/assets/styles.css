@@ -3,13 +3,13 @@
 
 /* Definición de variables para la paleta de colores */
 :root {
-  --color1: #FFFF80; /* Amarillo claro */
-  --color2: #ffdbb3; /* Naranja claro */
-  --color3: #FF5580; /* Rosa claro */
-  --color4: #FF0080; /* Rosa fuerte */
-  --color5: #402B3A; /* Morado oscuro */
-  --color6: #fdfaf6; /* Beige claro */
-  --color7: #0C0C0C; /* Negro */
+  --color1: #f0e2a4; /* Amarillo pastel */
+  --color2: #f4ebc3; /* Naranja pastel */
+  --color3: #c5ceae; /* Rosa pastel */
+  --color4: #bca297; /* Rosa salmón */
+  --color5: #ab526b; /* Morado claro */
+  --color6: #FFFFFF; /* Blanco */
+  --color7: #12131b; /* Azul oscuro */
 
   /* Variables de estilo para la fuente Comfortaa */
   --font-family: 'Comfortaa', cursive;
@@ -34,7 +34,7 @@
   --subtitle-margin-bottom: 0.5em;
 
   --header-background-color: var(--color5);
-  --header-color: var(--color6);
+  --header-color: var(--color5);
   --header-padding: 20px;
   --header-text-align: center;
 

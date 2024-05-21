@@ -1,30 +1,27 @@
 <template>
   <AdminLayout>
     <div class="admin-welcome">
-      <h2>
-        Esta es una prueba de contenido de admin-welcome <br />
-        Aquí cambia el contenido según si selecciona proyectos o calendario
-        <br />
-        La estructura de las demás views de administrador en teoría deberían
-        tener la misma estructura de admin-welcome
-      </h2>
-      <!-- Contenido de bienvenida para administradores -->
+      <WelcomeMessage />
     </div>
   </AdminLayout>
 </template>
 
 <script>
 import AdminLayout from "@/layouts/AdminLayout.vue";
+import WelcomeMessage from "@/components/WelcomeMessage.vue";
 
 export default {
   name: "AdminWelcome",
   components: {
     AdminLayout,
+    WelcomeMessage,
   },
 };
 </script>
 
 <style scoped>
+@import "@/assets/styles.css";
+
 .admin-welcome {
   padding: 20px;
   background-color: var(--color2);
