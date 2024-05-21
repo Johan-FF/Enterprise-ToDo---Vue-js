@@ -21,20 +21,6 @@
           v-model="formData[field.name]"
           :placeholder="field.placeholder"
         ></textarea>
-
-        <select
-          v-else-if="field.type === 'select'"
-          :name="field.name"
-          v-model="formData[field.name]"
-        >
-          <option
-            v-for="option in field.options"
-            :value="option.value"
-            :key="option.value"
-          >
-            {{ option.text }}
-          </option>
-        </select>
         <div
           v-else-if="field.type === 'select' && field.name === 'participants'"
           class="participants-field"
@@ -77,41 +63,6 @@ export default {
     fields: {
       type: Array,
       required: true,
-      default: () => [
-        {
-          name: "firstName",
-          label: "Nombre",
-          type: "text",
-          placeholder: "Ingrese su nombre",
-        },
-        {
-          name: "lastName",
-          label: "Apellido",
-          type: "text",
-          placeholder: "Ingrese su apellido",
-        },
-        {
-          name: "email",
-          label: "Correo",
-          type: "email",
-          placeholder: "Ingrese su correo",
-        },
-        {
-          name: "cedula",
-          label: "Cédula",
-          type: "text",
-          placeholder: "Ingrese su cédula",
-        },
-        {
-          name: "role",
-          label: "Rol",
-          type: "select",
-          options: [
-            { value: "admin", text: "Administrador" },
-            { value: "user", text: "Usuario" },
-          ],
-        },
-      ],
     },
   },
   data() {
@@ -128,18 +79,6 @@ export default {
   methods: {
     handleSubmit() {
       this.$emit("submit", this.formData);
-    },
-    addParticipant() {
-      if (
-        this.newParticipant.trim() &&
-        !this.formData.participants.includes(this.newParticipant.trim())
-      ) {
-        this.formData.participants.push(this.newParticipant.trim());
-        this.newParticipant = "";
-      }
-    },
-    removeParticipant(index) {
-      this.formData.participants.splice(index, 1);
     },
     addParticipant() {
       if (
