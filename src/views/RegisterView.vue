@@ -5,6 +5,7 @@
       <div id="form-container">
         <h1 class="title">Registro</h1>
         <form @submit.prevent="submitForm" class="register-form">
+          <h2>Organización</h2>
           <div class="form-group">
             <label for="companyName">Nombre de la compañía</label>
             <input
@@ -44,15 +45,6 @@
             <input type="text" id="country" v-model="country" required />
           </div>
           <div class="form-group">
-            <label for="contactName">Nombre del contacto principal</label>
-            <input
-              type="text"
-              id="contactName"
-              v-model="contactName"
-              required
-            />
-          </div>
-          <div class="form-group">
             <label for="companyPhone">Número de contacto de la compañía</label>
             <input
               type="tel"
@@ -61,20 +53,64 @@
               required
             />
           </div>
+
+          <h2>Administrador</h2>
           <div class="form-group">
-            <label for="contactPhone"
-              >Número de contacto del contacto principal</label
-            >
+            <label for="adminName">Nombre</label>
+            <input type="text" id="adminName" v-model="adminName" required />
+          </div>
+          <div class="form-group">
+            <label for="adminLastName">Apellido</label>
             <input
-              type="tel"
-              id="contactPhone"
-              v-model="contactPhone"
+              type="text"
+              id="adminLastName"
+              v-model="adminLastName"
               required
             />
           </div>
+          <div class="form-group">
+            <label for="adminEmail">Correo electrónico</label>
+            <input type="email" id="adminEmail" v-model="adminEmail" required />
+          </div>
+          <div class="form-group">
+            <label for="adminIdentification">Cédula</label>
+            <input
+              type="number"
+              id="adminIdentification"
+              v-model="adminIdentification"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="adminPassword">Contraseña</label>
+            <input
+              @input="verifyPassword('La contraseña no coincide')"
+              type="password"
+              id="adminPassword"
+              v-model="adminPassword"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="adminRePassword">Confirmar contraseña</label>
+            <input
+              @input="verifyPassword('La contraseña no coincide')"
+              type="password"
+              id="adminRePassword"
+              v-model="adminRePassword"
+              required
+            />
+          </div>
+
+          <label id="error-message" style="display: none; color: red"
+            >La contraseña no coincide</label
+          >
           <button type="submit" class="button-style default-button">
             Registrarse
           </button>
+          <label id="success-message" style="display: none; color: green"
+            >Organización creada con éxito</label
+          >
         </form>
       </div>
     </AppLayout>
@@ -84,6 +120,7 @@
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppLayout from "@/layouts/AppLayout.vue";
+import { register } from "@/services/user";
 
 export default {
   name: "RegisterView",
@@ -100,14 +137,21 @@ export default {
       city: "",
       postalCode: "",
       country: "",
-      contactName: "",
       companyPhone: "",
-      contactPhone: "",
+      // Admin
+      adminName: "",
+      adminLastName: "",
+      adminEmail: "",
+      adminIdentification: "",
+      adminPassword: "",
+      adminRePassword: "",
     };
   },
   methods: {
-    submitForm() {
-      // Aquí puedes manejar el envío del formulario
+    async submitForm() {
+      this.verifyPassword("Por favor verifique la contraseña");
+      if (this.adminPassword !== this.adminRePassword) return;
+
       const formData = {
         companyName: this.companyName,
         industry: this.industry,
@@ -116,11 +160,27 @@ export default {
         city: this.city,
         postalCode: this.postalCode,
         country: this.country,
-        contactName: this.contactName,
         companyPhone: this.companyPhone,
-        contactPhone: this.contactPhone,
+        name: this.adminName,
+        lastName: this.adminLastName,
+        email: this.adminEmail,
+        identification: this.adminIdentification.toString(),
+        password: this.adminPassword,
       };
-      console.log("Formulario de registro enviado", formData);
+
+      await register(formData).then((data) => {
+        if (data.message === "success")
+          document.getElementById("success-message").style.display = "block";
+      });
+    },
+    verifyPassword(message) {
+      const error = document.getElementById("error-message");
+      if (this.adminPassword !== this.adminRePassword) {
+        error.style.display = "block";
+        error.textContent = message;
+      } else {
+        error.style.display = "none";
+      }
     },
   },
 };
@@ -173,6 +233,7 @@ input {
 }
 
 button {
+  margin-top: 32px;
   border-radius: var(--button-border-radius);
   font-family: var(--font-comfortaa);
   background-color: var(--color3);

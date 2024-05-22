@@ -1,8 +1,8 @@
 <template>
   <header class="user-header">
-    <h1>Bienvenido, {{ name }}</h1>
+    <h1>Bienvenido, {{ name }} {{ lastName }}</h1>
     <p>Rol general: {{ generalRole }}</p>
-    <p>Rol específico: {{ specificRole }}</p>
+    <p>Rol específico: {{ role }}</p>
   </header>
 </template>
 
@@ -14,8 +14,9 @@ export default {
   computed: {
     ...mapState({
       name: (state) => state.user?.name || "", // Uso del operador optional chaining (?.)
+      lastName: (state) => state.user?.lastName || "", // Uso del operador optional chaining (?.)
       generalRole: (state) => state.user?.generalRole || "", // Uso del operador optional chaining (?.)
-      specificRole: (state) => state.user?.specificRole || "", // Uso del operador optional chaining (?.)
+      role: (state) => state.user?.role || "", // Uso del operador optional chaining (?.)
     }),
   },
 };

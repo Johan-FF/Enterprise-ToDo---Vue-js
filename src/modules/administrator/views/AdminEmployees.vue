@@ -56,6 +56,18 @@ export default {
             { value: "user", text: "Usuario" },
           ],
         },
+        {
+          name: "password",
+          label: "Contraseña",
+          type: "password",
+          placeholder: "Ingrese su contraseña",
+        },
+        {
+          name: "rePassword",
+          label: "Confirmar contraseña",
+          type: "password",
+          placeholder: "Ingrese su contraseña nuevamente",
+        },
       ],
       content: [
         { name: "Juan", description: 30, city: "Madrid" },

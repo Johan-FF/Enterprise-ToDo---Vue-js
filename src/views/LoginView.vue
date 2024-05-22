@@ -20,6 +20,8 @@
               class="input-style"
             />
           </div>
+
+          <label id="error-message" style="display: none; color: red"></label>
           <button type="submit" class="button-style default-button">
             Iniciar sesión
           </button>
@@ -32,6 +34,7 @@
 <script>
 import AppHeader from "@/components/AppHeader.vue";
 import AppLayout from "@/layouts/AppLayout.vue";
+import { login } from "@/services/user";
 
 export default {
   name: "LoginView",
@@ -46,20 +49,21 @@ export default {
     };
   },
   methods: {
-    login() {
-      const user = {
-        name: this.username,
-        password: this.password,
-      };
-      // Aquí podrías enviar el usuario y contraseña al servidor para autenticación
-      // y luego manejar la respuesta según corresponda
-      // Ejemplo de manejo de respuesta simulado:
-      if (this.username === "usuario" && this.password === "contraseña") {
-        this.$store.dispatch("updateUser", user);
-        this.$router.push({ name: "admin-welcome" });
-      } else {
-        alert("Usuario o contraseña incorrectos");
-      }
+    async login() {
+      await login(this.username, this.password)
+        .then((data) => {
+          this.$store.dispatch("updateUser", data);
+          this.$router.push({ name: `${data.generalRole}-welcome` });
+        })
+        .catch((error) => {
+          const errorLabel = document.getElementById("error-message");
+          if (error.error === "Email incorrect") {
+            errorLabel.innerHTML = "Correo electrónico incorrecto";
+          } else if (error.error === "Password incorrect") {
+            errorLabel.innerHTML = "Contraseña incorrecto";
+          }
+          errorLabel.style.display = "block";
+        });
     },
   },
 };
